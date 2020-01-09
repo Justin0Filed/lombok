@@ -263,7 +263,7 @@ public class HandleLog {
 	@ProviderFor(JavacAnnotationHandler.class)
 	public static class HandleUIHLog extends JavacAnnotationHandler<UIHLog> {
 		@Override public void handle(AnnotationValues<UIHLog> annotation, JCAnnotation ast, JavacNode annotationNode) {
-			handleFlagUsage(annotationNode, ConfigurationKeys.LOG_SLF4J_FLAG_USAGE, "@UIHLog", ConfigurationKeys.LOG_ANY_FLAG_USAGE, "any @Log");
+			handleFlagUsage(annotationNode, ConfigurationKeys.LOG_UIH_FLAG_USAGE, "@UIHLog", ConfigurationKeys.LOG_ANY_FLAG_USAGE, "any @Log");
 			processAnnotation(LoggingFramework.UIHLOG, annotation, annotationNode, annotation.getInstance().topic());
 		}
 	}

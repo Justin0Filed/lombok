@@ -273,7 +273,7 @@ public class HandleLog {
 	@ProviderFor(EclipseAnnotationHandler.class)
 	public static class HandleUIHLog extends EclipseAnnotationHandler<lombok.extern.uih.log.UIHLog> {
 		@Override public void handle(AnnotationValues<lombok.extern.uih.log.UIHLog> annotation, Annotation source, EclipseNode annotationNode) {
-			handleFlagUsage(annotationNode, ConfigurationKeys.LOG_SLF4J_FLAG_USAGE, "@UIHLog", ConfigurationKeys.LOG_ANY_FLAG_USAGE, "any @Log");
+			handleFlagUsage(annotationNode, ConfigurationKeys.LOG_UIH_FLAG_USAGE, "@UIHLog", ConfigurationKeys.LOG_ANY_FLAG_USAGE, "any @Log");
 			processAnnotation(LoggingFramework.UIHLOG, annotation, source, annotationNode, annotation.getInstance().topic());
 		}
 	}

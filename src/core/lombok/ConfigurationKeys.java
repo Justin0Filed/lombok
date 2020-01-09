@@ -407,7 +407,14 @@ public class ConfigurationKeys {
 	 * If set, <em>any</em> usage of {@code @Slf4j} results in a warning / error.
 	 */
 	public static final ConfigurationKey<FlagUsageType> LOG_SLF4J_FLAG_USAGE = new ConfigurationKey<FlagUsageType>("lombok.log.slf4j.flagUsage", "Emit a warning or error if @Slf4j is used.") {};
-	
+
+	/**
+	 * lombok configuration: {@code  lombok.extern.uih.log.UIHLog.flagUsage} = {@code WARNING} | {@code ERROR}.
+	 *
+	 * If set, <em>any</em> usage of {@code @UIHLog} results in a warning / error.
+	 */
+	public static final ConfigurationKey<FlagUsageType> LOG_UIH_FLAG_USAGE = new ConfigurationKey<FlagUsageType>("lombok.extern.uih.log.UIHLog.flagUsage", "Emit a warning or error if @UIHLog is used.") {};
+
 	/**
 	 * lombok configuration: {@code lombok.log.xslf4j.flagUsage} = {@code WARNING} | {@code ERROR}.
 	 * 
