@@ -31,6 +31,7 @@ import lombok.core.configuration.IdentifierName;
 import lombok.core.configuration.LogDeclaration;
 import lombok.core.configuration.LogDeclaration.LogFactoryParameter;
 import lombok.core.handlers.LoggingFramework;
+import lombok.extern.uih.log.UIHLog;
 import lombok.javac.JavacAnnotationHandler;
 import lombok.javac.JavacNode;
 import lombok.javac.JavacTreeMaker;
@@ -253,4 +254,19 @@ public class HandleLog {
 			processAnnotation(framework, annotation, annotationNode, annotation.getInstance().topic());
 		}
 	}
+
+	/**
+	 * Handles the {@link lombok.extern.uih.log.UIHLog} annotation for javac.
+	 *
+	 * @author junjie.fu 2019.1.9
+	 */
+	@ProviderFor(JavacAnnotationHandler.class)
+	public static class HandleUIHLog extends JavacAnnotationHandler<UIHLog> {
+		@Override public void handle(AnnotationValues<UIHLog> annotation, JCAnnotation ast, JavacNode annotationNode) {
+			handleFlagUsage(annotationNode, ConfigurationKeys.LOG_SLF4J_FLAG_USAGE, "@UIHLog", ConfigurationKeys.LOG_ANY_FLAG_USAGE, "any @Log");
+			processAnnotation(LoggingFramework.UIHLOG, annotation, annotationNode, annotation.getInstance().topic());
+		}
+	}
+
+
 }
