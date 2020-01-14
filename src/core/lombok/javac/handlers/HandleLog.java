@@ -51,7 +51,7 @@ import com.sun.tools.javac.util.List;
 import com.sun.tools.javac.util.Name;
 
 public class HandleLog {
-	private static final IdentifierName LOG = IdentifierName.valueOf("log");
+	private static final IdentifierName LOG = IdentifierName.valueOf("logger");
 	
 	private HandleLog() {
 		throw new UnsupportedOperationException();
@@ -64,8 +64,8 @@ public class HandleLog {
 		switch (typeNode.getKind()) {
 		case TYPE:
 			IdentifierName logFieldName = annotationNode.getAst().readConfiguration(ConfigurationKeys.LOG_ANY_FIELD_NAME);
-			if (logFieldName == null) logFieldName = LOG;
-			
+			if (logFieldName == null){ logFieldName = LOG;}
+
 			boolean useStatic = !Boolean.FALSE.equals(annotationNode.getAst().readConfiguration(ConfigurationKeys.LOG_ANY_FIELD_IS_STATIC));
 			
 			if ((((JCClassDecl) typeNode.get()).mods.flags & Flags.INTERFACE) != 0) {
@@ -77,7 +77,7 @@ public class HandleLog {
 				return;
 			}
 			
-			if (loggerTopic != null && loggerTopic.trim().isEmpty()) loggerTopic = null;
+			if (loggerTopic != null && loggerTopic.trim().isEmpty()){ loggerTopic = null;}
 			if (framework.getDeclaration().getParametersWithTopic() == null && loggerTopic != null) {
 				annotationNode.addError(framework.getAnnotationAsString() + " does not allow a topic.");
 				loggerTopic = null;
@@ -171,7 +171,8 @@ public class HandleLog {
 			processAnnotation(LoggingFramework.JUL, annotation, annotationNode, annotation.getInstance().topic());
 		}
 	}
-	
+
+
 	/**
 	 * Handles the {@link lombok.extern.log4j.Log4j} annotation for javac.
 	 */
@@ -204,7 +205,20 @@ public class HandleLog {
 			processAnnotation(LoggingFramework.SLF4J, annotation, annotationNode, annotation.getInstance().topic());
 		}
 	}
-	
+
+	/**
+	 * Handles the {@link lombok.extern.uih.log.UIHLog} annotation for javac.
+	 *
+	 * @author junjie.fu 2019.1.9
+	 */
+	@ProviderFor(JavacAnnotationHandler.class)
+	public static class HandleUIHLog extends JavacAnnotationHandler<lombok.extern.uih.log.UIHLog> {
+		@Override public void handle(AnnotationValues<UIHLog> annotation, JCAnnotation ast, JavacNode annotationNode) {
+			handleFlagUsage(annotationNode, ConfigurationKeys.LOG_UIH_FLAG_USAGE, "@UIHLog", ConfigurationKeys.LOG_ANY_FLAG_USAGE, "any @Log");
+			processAnnotation(LoggingFramework.UIHLOG, annotation, annotationNode, annotation.getInstance().topic());
+		}
+	}
+
 	/**
 	 * Handles the {@link lombok.extern.slf4j.XSlf4j} annotation for javac.
 	 */
@@ -255,18 +269,7 @@ public class HandleLog {
 		}
 	}
 
-	/**
-	 * Handles the {@link lombok.extern.uih.log.UIHLog} annotation for javac.
-	 *
-	 * @author junjie.fu 2019.1.9
-	 */
-	@ProviderFor(JavacAnnotationHandler.class)
-	public static class HandleUIHLog extends JavacAnnotationHandler<UIHLog> {
-		@Override public void handle(AnnotationValues<UIHLog> annotation, JCAnnotation ast, JavacNode annotationNode) {
-			handleFlagUsage(annotationNode, ConfigurationKeys.LOG_UIH_FLAG_USAGE, "@UIHLog", ConfigurationKeys.LOG_ANY_FLAG_USAGE, "any @Log");
-			processAnnotation(LoggingFramework.UIHLOG, annotation, annotationNode, annotation.getInstance().topic());
-		}
-	}
+
 
 
 }

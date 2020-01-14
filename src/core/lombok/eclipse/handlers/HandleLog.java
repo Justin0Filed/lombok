@@ -53,7 +53,7 @@ import lombok.eclipse.EclipseAnnotationHandler;
 import lombok.eclipse.EclipseNode;
 
 public class HandleLog {
-	private static final IdentifierName LOG = IdentifierName.valueOf("log");
+	private static final IdentifierName LOG = IdentifierName.valueOf("logger");
 
 	private HandleLog() {
 		throw new UnsupportedOperationException();
@@ -66,7 +66,7 @@ public class HandleLog {
 		case TYPE:
 			IdentifierName logFieldName = annotationNode.getAst().readConfiguration(ConfigurationKeys.LOG_ANY_FIELD_NAME);
 			if (logFieldName == null) logFieldName = LOG;
-			
+
 			boolean useStatic = !Boolean.FALSE.equals(annotationNode.getAst().readConfiguration(ConfigurationKeys.LOG_ANY_FIELD_IS_STATIC));
 			
 			TypeDeclaration typeDecl = null;

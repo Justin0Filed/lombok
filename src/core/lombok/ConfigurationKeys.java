@@ -413,7 +413,7 @@ public class ConfigurationKeys {
 	 *
 	 * If set, <em>any</em> usage of {@code @UIHLog} results in a warning / error.
 	 */
-	public static final ConfigurationKey<FlagUsageType> LOG_UIH_FLAG_USAGE = new ConfigurationKey<FlagUsageType>("lombok.extern.uih.log.UIHLog.flagUsage", "Emit a warning or error if @UIHLog is used.") {};
+	public static final ConfigurationKey<FlagUsageType> LOG_UIH_FLAG_USAGE = new ConfigurationKey<FlagUsageType>("lombok.log.uihlog.flagUsage", "Emit a warning or error if @UIHLog is used.") {};
 
 	/**
 	 * lombok configuration: {@code lombok.log.xslf4j.flagUsage} = {@code WARNING} | {@code ERROR}.

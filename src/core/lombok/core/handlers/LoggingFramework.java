@@ -56,10 +56,10 @@ public class LoggingFramework {
 		LogDeclaration.valueOf("org.slf4j.Logger org.slf4j.LoggerFactory.getLogger(TYPE)(TOPIC)")
 	);
 
-	// private static final com.uih.uplus.common.log.logger.IUihLogger logger = com.uih.uplus.common.log.logger.UihLoggerFactory.getUIHLogger(TargetType.class);
+	// private static final com.uih.uplus.common.log.logger.IUihLogger logger = com.uih.uplus.common.log.logger.UihLoggerFactory.getUihLogger(TargetType.class);
 	public static final LoggingFramework UIHLOG = new LoggingFramework(
 			lombok.extern.uih.log.UIHLog.class,
-			LogDeclaration.valueOf("com.uih.uplus.common.log.logger.IUihLogger com.uih.uplus.common.log.logger.UihLoggerFactory.getUIHLogger(TYPE)(TOPIC)")
+			LogDeclaration.valueOf("com.uih.uplus.common.log.logger.IUihLogger com.uih.uplus.common.log.logger.UihLoggerFactory.getUihLogger(TYPE)(TOPIC)")
 	);
 	
 	// private static final org.slf4j.ext.XLogger log = org.slf4j.ext.XLoggerFactory.getXLogger(TargetType.class);

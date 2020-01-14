@@ -26,14 +26,6 @@ import java.lang.annotation.Target;
  * </pre>
  *
  * This annotation is valid for classes and enumerations.<br>
- * @see lombok.extern.apachecommons.CommonsLog &#64;CommonsLog
- * @see lombok.extern.java.Log &#64;Log
- * @see lombok.extern.log4j.Log4j &#64;Log4j
- * @see lombok.extern.log4j.Log4j2 &#64;Log4j2
- * @see lombok.extern.slf4j.XSlf4j &#64;XSlf4j
- * @see lombok.extern.jbosslog.JBossLog &#64;JBossLog
- * @see lombok.extern.flogger.Flogger &#64;Flogger
- * @see lombok.CustomLog &#64;CustomLog
  */
 @Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
