@@ -6,9 +6,11 @@
 4.compile target编译；
 5.maven target用于构建maven依赖库，会打包生成lombok.jar，lombok-1.18.11.jar，javadoc，source等jar包，并放在./dist目录中；
 
-6.buildscripts中的ivy.xml脚本中第48行需要注释掉，否者构建intellij工程会失败。<dependency org="org.eclipse.jdt" name="org.eclipse.jdt.compiler.apt" rev="1.3.300" conf="ecj9->default; eclipseBuild->default" />
+6.buildscripts中的ivy.xml脚本中第48行需要注释掉，否者构建intellij工程会失败。<dependency <org="org.eclipse.jdt" name="org.eclipse.jdt.compiler.apt" rev="1.3.300" conf="ecj9->default; eclipseBuild->default" />
 
 注意：
 lombok的jar包版本、lombok-intellij-plugin工程中./lib的lombok、工程中引用的lombok jar包必须是同一个jar包！！
 
 修改lombok原工程生成的jar包：1.需要作为lombok-intellij-plugin工程中./lib里的jar包（注意修改build.gradle里面lombok依赖的版本）；2.作为工程引用的jar包版本（可放在maven库中）
+
+本工程对于lombok版本没有依赖，可以生成其他版本的lombok jar包，版本定义在src/lombok/core/version.java中定义
